@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
+
+* {
+    margin:auto;
+    padding: 0;
+    border:0;
+}
+
+body {
+    font-family:'Raleway', sans-serif;
+    width: 100%;
+    font-size: 16px;
+
+}
+
+nav, section, footer, header {
+    max-width: 1280px;
+}
+
+
+
+
+.card-img-top {
+    height: 232px;
+}
