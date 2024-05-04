@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<section id="productos">
+    <div class="table-responsive" style="max-width: 1280px;">
+        <h2>Descripción del Producto</h2>
+        <table class="table table-sm align-middle" style="max-width: 1280px;">
+            <thead>
+                <tr>
+                    <th>Imágen</th>
+                    <th>Nombre del producto</th>
+                    <th>Descripción</th>
+                    <th>Tipo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}" class="rounded img-thumbnail float-start" width="200px"></td>
+                    <td>{{ producto.nombre }}</td>
+                    <td><p>{{ producto.descripcion }}</p></td>
+                    <td>{{ producto.get_privado_display }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <a href="{% url 'NuevoProducto' %}"><button type="button" class="btn btn-outline-dark btn-lg m-2">Nuevo Producto</button></a>
+    </div>
+</section>
+{% endblock %}

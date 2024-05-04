@@ -3,45 +3,25 @@
 {% load static %}
 
 {% block contenido %}
-<section id="Menu" style="background-color: #17A2B8; color: #ffffff;">
-    <h1 class="display-5 fw-bold text-center py-5">Nuestros Flanes</h1>
-    <div class="row">
-    <div class="col-12 col-md-4 pb-5">
-        <div class="card mx-5">
-            <img src="{% static 'img/flan_queso.jpg' %}" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title fw-bold py-2">Flan de Queso</h5>
-                <p class="card-text">Sumérgete en la delicia del Flan de Queso. Textura sedosa y sabor irresistible que combina lo mejor del flan tradicional con la riqueza del queso. Cada bocado es una experiencia sublime. Perfecto para cualquier ocasión. ¡Déjate seducir por la tentación del Flan de Queso!</p>
-                <button type="button" class="btn btn-outline-primary"
-                    style="border-color: #17A2B8; color:#0F0F0F; width: 99px;height: 40px; margin-right: 23px;">Ver
-                    más</button>
-            </div>
+<section id="Menu" style="background-color: rgb(74, 209, 243); color: #ffffff;">
+
+    <h1 class="display-5 fw-bold text-center py-5">Nuestros Sabores</h1>
+    <div class="row row-cols-1 row-cols-md-3 g-4 pb-5">
+        {% csrf_token %}
+        {% for producto in productos  %}
+        <div class="col">
+            <div class="card h-100" style="max-width: 20rem;">
+                <img src="{{ producto.imagen.url }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title fw-bold py-2">{{ producto.nombre }}</h5>
+                    <p class="card-text">{{ producto.descripcion }}</p>
+                    <button type="button" class="btn btn-outline-primary"
+                        style="border-color: rgb(74, 209, 243); color:#0F0F0F; width: 99px;height: 40px; margin-right: 23px;">Ver
+                        más</button>
+                </div>
+            </div>          
         </div>
-    </div>
-    <div class="col-12 col-md-4 pb-5">
-        <div class="card mx-5">
-            <img src="{% static 'img/flan_caramelo.jpg' %}" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title fw-bold py-2">Flan de Caramelo</h5>
-                <p class="card-text">Déjate envolver por la dulzura del Flan de Caramelo. Flan suave y sedoso con una generosa capa de caramelo dorado. Cada cucharada es una sinfonía de sabores. Ideal para cualquier momento del día. Sumérgete en la irresistible tentación del Flan de Caramelo. ¡No podrás dejar de saborearlo!</p>
-                <button type="button" class="btn btn-outline-primary"
-                    style="border-color: #17A2B8; color:#0F0F0F; width: 99px;height: 40px; margin-right: 23px;">Ver
-                    más</button>
-            </div>
-        </div>
-    </div>
-    <div class="col-12 col-md-4 pb-5">
-        <div class="card mx-5">
-            <img src="{% static 'img/flan_almendras.jpg' %}" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title fw-bold py-2">Flan de Almendras</h5>
-                <p class="card-text">Descubre el encanto irresistible del Flan de Almendras. Una deliciosa combinación de sabores y texturas que te enamorará. Suave flan con un toque crujiente de almendras tostadas. Cada bocado es una experiencia única. Ideal para los amantes de los frutos secos. ¡Déjate cautivar por este postre excepcional!</p>
-                <button type="button" class="btn btn-outline-primary"
-                    style="border-color: #17A2B8; color:#0F0F0F; width: 99px;height: 40px; margin-right: 23px;">Ver
-                    más</button>
-            </div>
-        </div>
-    </div>
+        {% endfor %}
     </div>
 </section>
 

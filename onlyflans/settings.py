@@ -120,10 +120,14 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 #Sólo se especifica el directorio cuando está fuera static/ está fuera de la aplicación (su carpeta)
-""" STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
-]
- """
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'static')
+# ]
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+MEDIA_URL = 'media/' #Declaración de la carpeta en que se guardarán las fotos de los productos y otros.
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
