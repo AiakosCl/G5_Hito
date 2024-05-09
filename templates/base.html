@@ -18,13 +18,17 @@
         {% include "includes/navbar.html" %}
     {% endblock %}
 
-    {% include "includes/mensajes.html" %}
+    <h2>{% include "includes/mensajes.html" %}</h2>
+
+    {% block bienvenida %}
+    {% endblock %}
 
     {% block cabecera %}
         {% include "includes/header.html" %}
     {% endblock %}
 
-    {% block contenido %}{% endblock %}
+    {% block contenido %}
+    {% endblock %}
 
     {% block footer %}
         {% include "includes/footer.html" %}

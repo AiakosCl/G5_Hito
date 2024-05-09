@@ -12,8 +12,8 @@
         <div class="modal-dialog modal-lg" >
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title">Maestro de Producto</h1>
-                    <a href="{% url 'Inicio' %}"><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
+                    <h1 class="modal-title">Editar Producto</h1>
+                    <a href="{% url 'ListaProducto' %}#productos"><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
                 </div>
                 <!-- barra de mensajes -->
                 {% include "includes/mensajes.html" %}
@@ -22,24 +22,33 @@
                     <!-- Formulario para ingresar nuevo producto con Clases Bootstrap -->
                     <form method="post" enctype="multipart/form-data" width="100%" class="row g-3 mx-3">
                         {% csrf_token %}
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="id_NombreProducto" name="nombre" placeholder="Ingrese nombre del producto...">
-                            <label for="id_NombreProducto" class="form-label">{{formulario.nombre.label}}</label>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <textarea type="text" class="form-control" id="id_DescProducto" name="descripcion" rows="3" placeholder="Escriba una reseña del producto..."></textarea>
-                            <label for="id_DescProducto" class="form-label">{{formulario.descripcion.label}}</label>
+                        <div class="mb-3">
+                            <label for="id_NombreProducto" class="form-label">Nombre del Producto:</label>
+                            <input type="text" class="form-control" id="id_NombreProducto" name="nombre" value="{{formulario.nombre}}">
                         </div>
                         <div class="mb-3">
-                            <label for="id_ImagenProducto" class="form-label">Imagen del producto:</label>
-                            <input type="file" class="form-control" id="id_ImagenProducto" name="imagen" placeholder="Seleccione el archivo">
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input type="number" class="form-control" id="id_PrecioProducto" name="precio" placeholder="0">
-                            <label for="id_PrecioProducto" class="form-label">{{formulario.precio.label}}</label>
+                            <label for="id_DescProducto" class="form-label">Descripción del producto:</label>
+                            <textarea type="text" class="form-control" id="id_DescProducto" name="descripcion" rows="3">{{formulario.descripcion}}</textarea>
                         </div>
                         <div class="mb-3">
-                            <label for="id_Liviano" class="form-label">{{formulario.liviano.label}}</label>
+                            <label for="id_PrecioProducto" class="form-label">Precio del producto:</label>
+                            <input type="text" class="form-control" id="id_PrecioProducto" name="precio" value="{{formulario.precio}}">
+                        </div>                        
+                        <div class="mb-3">
+                            <table style="width: 100%;">
+                                <tr>
+                                    <td>
+                                        <img src="{{ formulario.imagen.url }}" class="img-card-top float-start" height="200px" alt="">
+                                    </td>
+                                    <td>
+                                        <label for="id_ImagenProducto" class="form-label">Imagen del producto:</label>
+                                        <input type="file" class="form-control" id="id_ImagenProducto" name="imagen">
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="mb-3">
+                            <label for="id_Liviano" class="form-label">Preparación:</label>
                             <div class="form-check">
                                 <input type="radio" class="form-check-input" name="liviano" id="liviano_si" value = "True" {% if formulario.liviano.value %}checked{% endif %}>
                                 <label class="form-check-label" for="liviano_si"><i class="fa-solid fa-carrot"></i> - Sin Azúcar</label>
@@ -50,7 +59,7 @@
                             </div>
                         </div>
                         <div class="mb-3">
-                            <label for="id_Privado" class="form-label">{{formulario.privado.label}}</label>
+                            <label for="id_Privado" class="form-label">Privacidad:</label>
                             <div class="form-check">
                                 <input type="radio" class="form-check-input" name="privado" id="privado_si" value = "True" {% if formulario.privado.value %}checked{% endif %}>
                                 <label class="form-check-label" for="privado_si">Privado</label>
@@ -62,7 +71,7 @@
                         </div>
                         <!-- Cómo utilizar los botones de radio para seleccionar un booleando -->
                         <div class="modal-footer">
-                            <a href="{% url 'Inicio' %}"><button type="button" class="btn btn-outline-danger btn-lg m-2" data-bs-dismiss="modal">Cerrar</button></a>
+                            <a href="{% url 'ListaProducto' %}#productos"><button type="button" class="btn btn-outline-danger btn-lg m-2" data-bs-dismiss="modal">Cerrar</button></a>
                             <button type="submit" class="btn btn-outline-success btn-lg m-2">Guardar</button>
                         </div>
                     </form>

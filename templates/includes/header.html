@@ -1,20 +1,39 @@
 {% load static %}
 
-<header id="Cabecera">
+<!-- {% if user.is_authenticated %}
+{% block bienvenida %}
+<section id="Bienvenida">
+    <div id="intro-example2" class="p-5 text-center bg-imagen"
+        style="background-image: url('{% static 'img/bienvenida.jpg' %}'); background-size: contain; background-repeat: no-repeat;">
+        <div class="mask" style="background-color: rgba(0, 0, 0, 0.7);">
+            <div class="d-flex justify-content-center align-items-center h-100">
+                <div class="text-white">
+                    <h1 class="mb-3">Bienvenido {{user.username}}</h1>
+                    <h2 class="mb-4">OnlyFlans</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock%}
+{% endif %} -->
 
-    <!-- Texto Traslúcido -->
+<header id="Cabecera">
     <div id="intro-example" class="p-5 text-center bg-image">
         <div class="mask" style="background-color: rgba(248, 133, 187, 0.685);">
             <div class="d-flex justify-content-center align-items-center h-100">
                 <div class="text-white">
                     <h1 class="mb-3"><img src="{% static 'img/onlyflans.png' %}" alt="" width="300px"></h1>
-                    <h2 class="mb-4">Del mundo a tu mesa</h2>
+                    {% if user.is_authenticated %}
+                    <h2 class="mb-3">Bienvenido, {{user.first_name}}</h1>
+                    {% endif %}
+                    <h3 class="mb-4">Del mundo a tu mesa</h2>
                     <a data-mdb-ripple-init class="btn btn-outline-light btn-lg m-2"
                         href="{% url 'AcercaDe' %}#AcercaDe" role="button" rel="nofollow">Acerca de</a>
-                    <button type="button" class="btn btn-outline-light btn-lg m-2" data-bs-toggle="modal" data-bs-target="#VideoModal">Historia</button>
+                    <button type="button" class="btn btn-outline-light btn-lg m-2" data-bs-toggle="modal"
+                        data-bs-target="#VideoModal">Historia</button>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Texto Traslúcido -->
 </header>

@@ -30,6 +30,7 @@
                     <form method="post" width="100%" class="row g-3 mx-3">
                         {% csrf_token %}
                         <!-- {{contacto.non_fields_errors}} -->
+                        <!-- Aquí cuando colocas el nombre del campo de tu modelo en "name=" de tu tag input, los relacionas -->
                         <div class="mb-3">
                             <label for="id_NombreCliente" class="form-label">{{contacto.NombreCliente.label}}</label>
                             <input type="text" class="form-control" id="id_NombreCliente" name="NombreCliente" placeholder="Su nombre">

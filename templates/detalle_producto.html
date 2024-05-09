@@ -10,6 +10,8 @@
                     <th>Imágen</th>
                     <th>Nombre del producto</th>
                     <th>Descripción</th>
+                    <th>Preparación</th>
+                    <th>Precio</th>
                     <th>Tipo</th>
                 </tr>
             </thead>
@@ -18,6 +20,16 @@
                     <td><img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}" class="rounded img-thumbnail float-start" width="200px"></td>
                     <td>{{ producto.nombre }}</td>
                     <td><p>{{ producto.descripcion }}</p></td>
+                    <td>
+                        <p class="fs-3 text-center">
+                            {% if producto.liviano == False %}
+                            <i class="fa-solid fa-cookie"></i>
+                            {% else %}
+                            <i class="fa-solid fa-carrot"></i>
+                            {% endif %}    
+                        </p>
+                    </td>
+                    <td>{{producto.precio}}</td>
                     <td>{{ producto.get_privado_display }}</td>
                 </tr>
             </tbody>

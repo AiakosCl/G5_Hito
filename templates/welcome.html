@@ -3,25 +3,37 @@
 {% load static %}
 
 {% block contenido %}
-<section id="Menu" style="background-color: rgba(74, 243, 97, 0.3); color: #ffffff;">
+<section id="Menu" style="background-color: rgba(250, 247, 103, 0.3); color: #533900;">
 
     <h1 class="display-5 fw-bold text-center py-5">Nuestros Sabores (Privado)</h1>
-    <div class="row">
-        {% csrf_token %}
-        {% for producto in productos  %}
-        <div class="col-12 col-md-6 col-lg-4 pb-5">
-            <div class="card h-100" style="max-width: 20rem;">
-                <img src="{{ producto.imagen.url }}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title fw-bold py-2">{{ producto.nombre }}</h5>
-                    <p class="card-text">{{ producto.descripcion }}</p>
-                    <button type="button" class="btn btn-outline-primary"
-                        style="border-color: rgb(74, 243, 97); color:#0F0F0F; width: 99px;height: 40px; margin-right: 23px;">Ver
-                        más</button>
-                </div>
-            </div>          
+    <div style="max-width:100%;max-height: 700px;overflow-y: auto;">
+        <div class="row">
+            {% csrf_token %}
+            {% for producto in productos  %}
+            <div class="col-12 col-md-6 col-lg-4 pb-5">
+                <div class="card" style="max-width: 20rem;">
+                    <img src="{{producto.imagen.url}}" class="card-img-top" height="200px" alt="...">
+                    <div class="card-body text-start ms-0 me-0">
+                        <h5 class="card-title fw-bold py-2">
+                            {% if producto.liviano == False %}
+                            <i class="fa-solid fa-cookie"></i> - {{ producto.nombre }}
+                            {% else %}
+                            <i class="fa-solid fa-carrot"></i> - {{ producto.nombre }}
+                            {% endif %}    
+                        </h5>
+                        <p class="card-text"></p>
+                        <a href="{% url 'detalle' producto.id_producto %}">
+                        <button type="button" class="btn btn-outline-success"
+                            style="border-color: rgb(174, 177, 6); color:#0F0F0F; width: 99px;height: 40px; margin-right: 23px;">Ver
+                            más</button>
+                        </a>
+                    </div>
+                </div>          
+            </div>
+            {% empty %}
+                <h2 class="fw-bold text-center py-5">No se han encontrado productos.</h2>
+            {% endfor %}
         </div>
-        {% endfor %}
     </div>
 </section>
 

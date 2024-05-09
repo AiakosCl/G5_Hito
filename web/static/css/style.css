@@ -24,20 +24,7 @@ nav, section, footer, header {
     background-size: cover;
 }
 
-#intro-example {
-    height: 400px;
-}
 
-/* Altura para dispositvos mayores a 992 */
-@media (min-width: 992px) {
-    #intro-example {
-        height: 600px;
-    }
-}
-
-.card-img-top {
-    max-height: 232px;
-}
 
     .messages {
         list-style-type: none;
