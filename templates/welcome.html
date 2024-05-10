@@ -3,35 +3,34 @@
 {% load static %}
 
 {% block contenido %}
-<section id="Menu" style="background-color: rgba(250, 247, 103, 0.3); color: #533900;">
+<section class="mt-2" id="Menu" style="background-color: rgba(250, 247, 103, 0.2); color: #533900;">
 
-    <h1 class="display-5 fw-bold text-center py-5">Nuestros Sabores (Privado)</h1>
-    <div style="max-width:100%;max-height: 700px;overflow-y: auto;">
+    <h1 class="display-5 fw-bold text-center py-5">Oferta para Socios...</h1>
+    <div style="max-width:100%;max-height: 700px;overflow-y: auto; overflow-x: hidden;">
         <div class="row">
             {% csrf_token %}
             {% for producto in productos  %}
-            <div class="col-12 col-md-6 col-lg-4 pb-5">
-                <div class="card" style="max-width: 20rem;">
+            <div class="col-12 col-md-6 col-lg-3 pb-5">
+                <div class="card" style="max-width: 18rem;">
                     <img src="{{producto.imagen.url}}" class="card-img-top" height="200px" alt="...">
                     <div class="card-body text-start ms-0 me-0">
                         <h5 class="card-title fw-bold py-2">
-                            {% if producto.liviano == False %}
-                            <i class="fa-solid fa-cookie"></i> - {{ producto.nombre }}
+                            {% if producto.liviano == True %}
+                            {{ producto.nombre }} (<i class="fa-solid fa-l"></i>) 
                             {% else %}
-                            <i class="fa-solid fa-carrot"></i> - {{ producto.nombre }}
+                            {{ producto.nombre }}  (<i class="fa-solid fa-t"></i>)
                             {% endif %}    
                         </h5>
                         <p class="card-text"></p>
                         <a href="{% url 'detalle' producto.id_producto %}">
-                        <button type="button" class="btn btn-outline-success"
-                            style="border-color: rgb(174, 177, 6); color:#0F0F0F; width: 99px;height: 40px; margin-right: 23px;">Ver
+                        <button type="button" class="btn btn-outline-warning">Ver
                             más</button>
                         </a>
                     </div>
                 </div>          
             </div>
             {% empty %}
-                <h2 class="fw-bold text-center py-5">No se han encontrado productos.</h2>
+            <h2 class="text-center" style="width: 100%;"><i class="fa-solid fa-heart-crack"></i> Ups! No encuentro lo que buscas</h2>
             {% endfor %}
         </div>
     </div>

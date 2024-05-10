@@ -6,8 +6,8 @@
         <div class="modal-dialog modal-lg" >
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title">Nuestro sabor...</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h1 class="modal-title">Es hora de un gustito...</h1>
+                    <a href="{% url 'Inicio' %}#Menu"><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
                 </div>
                 <div class="modal-body ms-0 me-0">
                     <div class="card mb-3 mx-auto" style="max-width: 1280px;">
@@ -27,21 +27,19 @@
                                     <p class="card-text">{{producto.descripcion}}</p>
                                 </div>
                                 <div class="card-footer text-end me-auto">
-                                    <p class="fs-5 fw-bold">Precio: CLP {{producto.precio|floatformat:2}}</p>
+                                    <p class="fs-5 fw-bold">Precio: CLP {{producto.precio}}</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 <div class="modal-footer">
-                    {% if user.is_authenticated %}
-                        <a href="{% url 'Bienvenida' %}#Menu">
-                            <button type="button" class="btn btn-outline-danger btn-lg m-2" data-bs-dismiss="modal">Cerrar</button>
-                        </a>
-                    {% else %}
-                        <a href="{% url 'Inicio' %}#Menu">
-                            <button type="button" class="btn btn-outline-danger btn-lg m-2" data-bs-dismiss="modal">Cerrar</button>
-                        </a>
+                    {% if user.is_staff %}
+                    <a href="{% url 'EditarProducto' producto.id_producto %}#productos"><button type="button" class="btn btn-outline-primary btn-lg m-2" data-bs-dismiss="modal"><i class="fa-solid fa-pen-to-square fs-3"></i></button</a>
                     {% endif %}
+                    <a href="{% url 'agregar_al_carrito' producto.id_producto %}">
+                        <button type="button" class="btn btn-outline-success btn-lg m-2" data-bs-dismiss="modal"><i class="fa-solid fa-cart-plus"></i></button>
+                    </a>
+
                 </div>
             </div>
         </div>

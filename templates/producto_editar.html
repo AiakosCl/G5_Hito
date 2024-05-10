@@ -51,11 +51,11 @@
                             <label for="id_Liviano" class="form-label">Preparación:</label>
                             <div class="form-check">
                                 <input type="radio" class="form-check-input" name="liviano" id="liviano_si" value = "True" {% if formulario.liviano.value %}checked{% endif %}>
-                                <label class="form-check-label" for="liviano_si"><i class="fa-solid fa-carrot"></i> - Sin Azúcar</label>
+                                <label class="form-check-label" for="liviano_si"><i class="fa-solid fa-l"></i> - Light</label>
                             </div>
                             <div class="form-check">
                                 <input type="radio" class="form-check-input" name="liviano" id="liviano_no" value = "False" {% if not formulario.liviano.value %}checked{% endif %}>
-                                <label class="form-check-label" for="liviano_no"><i class="fa-solid fa-cookie"></i> - Tradicional</label>
+                                <label class="form-check-label" for="liviano_no"><i class="fa-solid fa-t"></i> - Tradicional</label>
                             </div>
                         </div>
                         <div class="mb-3">

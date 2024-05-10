@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block contenido %}
-<section id="listas">
+<section id="usuarios">
     <div class="border border-info-subtle rounded-3" style="max-width: 1280px;">
         <h2>Lista de Usuarios</h2>
         <div id="table-responsive" style="max-width:100%;max-height: 700px;overflow-y: auto;">
@@ -21,7 +21,7 @@
                     <tr>
                         <td>
                             {% if usuario.is_staff %}
-                            <img src="{% static 'img/bienvenida.jpg' %}" class="rounded float-start" width=50px>
+                            <img src="{% static 'img/staff.png' %}" class="rounded float-start" width=50px>
                             {% else %}
                             <img src="{% static 'img/Ratatouille_2.png' %}" class="rounded float-start" width=50px>
                             {% endif %}

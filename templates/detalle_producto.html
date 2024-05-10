@@ -22,10 +22,10 @@
                     <td><p>{{ producto.descripcion }}</p></td>
                     <td>
                         <p class="fs-3 text-center">
-                            {% if producto.liviano == False %}
-                            <i class="fa-solid fa-cookie"></i>
+                            {% if producto.liviano == True %}
+                            <i class="fa-regular fa-circle-check"></i>
                             {% else %}
-                            <i class="fa-solid fa-carrot"></i>
+                            <i class="fa-regular fa-circle-xmark"></i>
                             {% endif %}    
                         </p>
                     </td>
