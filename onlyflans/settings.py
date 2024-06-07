@@ -28,8 +28,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*','https://onlyflans.onrender.com']
-CSFR_TRUSTED_ORIGINS = ['http://127.0.0.1:8000','https://onlyflans.onrender.com']
+ALLOWED_HOSTS = ['*','https://onlyflans-wdf5.onrender.com']
+CSFR_TRUSTED_ORIGINS = ['http://127.0.0.1:8000','https://onlyflans-wdf5.onrender.com']
 
 
 
