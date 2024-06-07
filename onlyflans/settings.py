@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+from dotenv import load_dotenv
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,12 +23,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-yzf(4u7l5l420w77#!w+p!zm*#e=eoq6ihnrgq5zz)6gz^nm4y'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*','https://onlyflans.onrender.com']
+CSFR_TRUSTED_ORIGINS = ['http://127.0.0.1:8000','https://onlyflans.onrender.com']
+
 
 
 # Application definition
@@ -54,7 +58,7 @@ MIDDLEWARE = [
 #Configuración del Login
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL='Bienvenida'
-LOGOUT_REDIRECT_URL='Inicio'
+LOGOUT_REDIRECT_URL='login'
 
 ROOT_URLCONF = 'onlyflans.urls'
 
@@ -83,7 +87,7 @@ WSGI_APPLICATION = 'onlyflans.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': BASE_DIR / os.environ.get('DB_NAME'),
     }
 }
 
